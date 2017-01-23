@@ -14,25 +14,34 @@
 # futurama.category_id = 1
 # futurama.save
 
-justified = Video.find_by(id: 2)
-justified.category_id = 2
-justified.save
+# justified = Video.find_by(id: 2)
+# justified.category_id = 2
+# justified.save
 
-sherlock = Video.find_by(id: 3)
-sherlock.category_id = 3
-sherlock.save
+# sherlock = Video.find_by(id: 3)
+# sherlock.category_id = 3
+# sherlock.save
 
-parks = Video.find_by(id: 4)
-parks.category_id = 1
-parks.save
+# parks = Video.find_by(id: 4)
+# parks.category_id = 1
+# parks.save
 
-venture = Video.find_by(id: 5)
-venture.category_id = 1
-venture.save
+# venture = Video.find_by(id: 5)
+# venture.category_id = 1
+# venture.save
 
-monk = Video.find_by(id: 6)
-monk.category_id = 3
-monk.save
+# monk = Video.find_by(id: 6)
+# monk.category_id = 3
+# monk.save
 
-# Video.find_by(id: 5).category_id = 1
-# Video.find_by(id: 6).category_id = 3
+# Video.create(title: 'Clueless', description: 'A rich high school student tries to boost a new pupil\'s popularity, but reckons without affairs of the heart getting in the way.', large_cover_url: '/tmp/clueless_large.jpg', small_cover_url: '/tmp/clueless.jpg', category_id: 1)
+# Video.create(title: 'Django Unchained', description: 'With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.', large_cover_url: '/tmp/django_large.jpg', small_cover_url: '/tmp/django.jpg', category_id: 2)
+# Video.create(title: 'Hot Fuzz', description: 'Exceptional London cop Nicholas Angel is involuntarily transferred to a quaint English village and paired with a witless new partner. While on the beat, Nicholas suspects a sinister conspiracy is afoot with the residents.', large_cover_url: '/tmp/hotfuzz_large.jpg', small_cover_url: '/tmp/hotfuzz.jpg', category_id: 3)
+# Video.create(title: 'Inglourious Basterds', description: 'As war rages in Europe, a Nazi-scalping squad of American soldiers, known to their enemy as “The Basterds,” is on a daring mission to take down the leaders of the Third Reich.', large_cover_url: '/tmp/inglouriousbasterds_large.jpg', small_cover_url: '/tmp/inglouriousbasterds.jpg', category_id: 2)
+# Video.create(title: 'Mad Max: Fury Road', description: 'A woman rebels against a tyrannical ruler in postapocalyptic Australia in search for her home-land with the help of a group of female prisoners, a psychotic worshipper, and a drifter named Max.', large_cover_url: '/tmp/madmax_large.jpg', small_cover_url: '/tmp/madmax.jpg', category_id: 2)
+# Video.create(title: 'Minority Report', description: 'In a future where a special police unit is able to arrest murderers before they commit their crimes, an officer from that unit is himself accused of a future murder.', large_cover_url: '/tmp/minorityreport_large.jpg', small_cover_url: '/tmp/minority_report.jpg', category_id: 3)
+# Video.create(title: 'The Office', description: 'A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium. Based on the hit BBC series.', large_cover_url: '/tmp/office_large.jpg', small_cover_url: '/tmp/office.jpg', category_id: 1)
+# Video.create(title: 'Silver Linings Playbook', description: 'After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.', large_cover_url: '/tmp/silverlinings_large.jpg', small_cover_url: '/tmp/silverlinings.jpg', category_id: 1)
+# Video.create(title: 'The Simpsons', description: 'The Simpsons is an American animated sitcom created by Matt Groening for the Fox Broadcasting Company.[1][2][3] The series is a satirical depiction of working-class life epitomized by the Simpson family, which consists of Homer, Marge, Bart, Lisa, and Maggie. ', large_cover_url: '/tmp/simpsons_large.jpg', small_cover_url: '/tmp/simpsons.jpg', category_id: 1)
+
+

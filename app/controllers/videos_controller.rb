@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   def index
-    @videos = Video.all
+    @categories = Category.all
+    # @categories.map { |category| category.recent_videos }
   end
 
   def show
