@@ -18,4 +18,12 @@ Myflix::Application.configure do
   config.assets.debug = true
 
   config.eager_load = false
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+  end  
 end
+
