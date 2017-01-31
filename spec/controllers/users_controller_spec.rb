@@ -14,8 +14,12 @@ describe UsersController do
   end
 
   describe 'POST create' do
+    # before { User.delete_all }
+
     context "with valid input" do
-      before { post :create, user: Fabricate.attributes_for(:user) }
+      before do
+        post :create, user: Fabricate.attributes_for(:user)
+      end
 
       it "creates the user" do
         expect(User.count).to eq(1)
@@ -27,7 +31,9 @@ describe UsersController do
     end
 
     context "with invalid input" do
-      before { post :create, :user => { full_name: 'Rachel Minto', password: 'password'} }
+      before do
+        post :create, :user => { full_name: 'Rachel Minto', password: 'password'}                 
+      end 
 
       it "does not create the user" do
         expect(User.count).to eq(0)
