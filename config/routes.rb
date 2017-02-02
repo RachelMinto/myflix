@@ -16,6 +16,7 @@ Myflix::Application.routes.draw do
   resources :categories, only: [:show, :index]
   resources :users, only: [:create]
   resources :sessions, only: [:create]
+  resources :user_videos, only: [:destroy]
 
   get '/register', to: 'users#new', as: :register
   get '/login', to: 'sessions#new', as: :login

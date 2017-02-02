@@ -97,4 +97,50 @@ describe UserVideosController do
       end
     end
   end
+
+  describe "DELETE destroy" do
+    let(:user) { Fabricate(:user) }
+    let(:video) { Fabricate(:video) }
+    let(:user_video) { Fabricate(:user_video, video_id: video.id, user_id: user.id)}
+
+    context "authenticated user" do
+      before do
+        session[:user_id] = user.id
+      end
+
+      context "with valid inputs" do
+        before { delete :destroy, id: user_video.id }
+
+        it "redirects to the my queue page" do
+          expect(response).to redirect_to('/my_queue')
+        end
+
+        it "deletes the queue item" do
+          expect(user.user_videos.count).to eq(0)
+        end        
+      end
+
+      it "does not delete the queue item if it does not belong to the user" do
+        bob = Fabricate(:user)
+        video2 = Fabricate(:video)
+        user_video1 = Fabricate(:user_video, video_id: video.id, user_id: user.id)
+        user_video2 = Fabricate(:user_video, video_id: video2.id, user_id: bob.id)
+
+        delete :destroy, id: user_video2.id
+        expect(user.user_videos.count).to eq(1)       
+      end
+    end
+
+    context "unauthenticated user" do
+      before { delete :destroy, id: user_video.id }
+
+      it "should redirect to root path" do
+        expect(response).to redirect_to root_path
+      end
+
+      it "should give an error message" do
+        expect(flash[:error]).to eq("You must be logged in to do that.")
+      end      
+    end
+  end
 end
