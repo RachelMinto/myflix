@@ -1,6 +1,8 @@
 class Video < ActiveRecord::Base
   belongs_to :category
   has_many :reviews, -> { order "created_at DESC" }
+  has_many :user_videos
+  has_many :users, through: :user_videos
   validates_presence_of :title, :description, :small_cover_url, :large_cover_url
 
   def self.search_by_title(search_term)

@@ -1,5 +1,5 @@
 Fabricator(:user_video) do
-  order { Faker::Number.between(1, 5) }
   user_id { Fabricate(:user).id }
+  order { [1, 2, 3, 4, 5].sample }  
   video_id { Fabricate(:video).id }
 end

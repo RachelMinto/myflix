@@ -44,4 +44,10 @@
 # Video.create(title: 'Silver Linings Playbook', description: 'After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.', large_cover_url: '/tmp/silverlinings_large.jpg', small_cover_url: '/tmp/silverlinings.jpg', category_id: 1)
 # Video.create(title: 'The Simpsons', description: 'The Simpsons is an American animated sitcom created by Matt Groening for the Fox Broadcasting Company.[1][2][3] The series is a satirical depiction of working-class life epitomized by the Simpson family, which consists of Homer, Marge, Bart, Lisa, and Maggie. ', large_cover_url: '/tmp/simpsons_large.jpg', small_cover_url: '/tmp/simpsons.jpg', category_id: 1)
 
-Review.create(rating: 5, comment: "What a great movie!!", user_id: 1, video_id: 2 )
+# Review.create(rating: 5, comment: "What a great movie!!", user_id: 1, video_id: 2 )
+
+# UserVideo.create(order: 1, user: User.find(1), video: Video.find(4))
+UserVideo.create(order: 2, user: User.find(1), video: Video.find(2))
+UserVideo.create(order: 3, user: User.find(1), video: Video.find(1))
+UserVideo.create(order: 4, user: User.find(1), video: Video.find(5))
+
