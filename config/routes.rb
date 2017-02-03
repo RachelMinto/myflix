@@ -17,6 +17,7 @@ Myflix::Application.routes.draw do
   resources :users, only: [:create]
   resources :sessions, only: [:create]
   resources :user_videos, only: [:destroy]
+  post '/update_queue', to: 'user_videos#update_queue'
 
   get '/register', to: 'users#new', as: :register
   get '/login', to: 'sessions#new', as: :login
