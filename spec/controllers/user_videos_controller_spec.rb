@@ -180,7 +180,30 @@ describe UserVideosController do
           queued_video2 = Fabricate(:user_video, user_id: alice.id, order: 2)
           post :update_queue, queued_videos: [{id: queued_video1.id, order: 3}, {id: queued_video2.id, order: 2}]
           expect(alice.user_videos.map(&:order)).to match_array([1, 2])
-        end     
+        end
+
+        it "should create a new rating for a video that doesn't have a current user rating" do
+          queued_video1 = Fabricate(:user_video, user_id: alice.id, order: 1)
+          post :update_queue, queued_videos: [{id: queued_video1.id, order: 3, rating: 3}]
+          expect(queued_video1.rating).to eq(3)         
+        end
+
+        it "should update a rating for a video that has a rating by current existing user" do
+          queued_video1 = Fabricate(:user_video, user_id: alice.id, order: 1)
+          review = Fabricate(:review, user_id: alice.id, video_id: queued_video1.id, rating: 2)
+          post :update_queue, queued_videos: [{id: queued_video1.id, order: 3, rating: 1}]
+          expect(queued_video1.rating).to eq(1)       
+        end
+
+        it "should not create a new review if a review already exists" do
+          video = Fabricate(:video, title: "Futurama")
+          review = Fabricate(:review, user_id: alice.id, video_id: video.id, rating: 2)          
+          queued_video1 = Fabricate(:user_video, user_id: alice.id, order: 1, video_id: video.id)
+
+          post :update_queue, queued_videos: [{id: queued_video1.id, order: 3, rating: 1}]
+          expect(Review.count).to eq(1)              
+        end
+
       end
     end
 
