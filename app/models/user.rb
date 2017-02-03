@@ -6,4 +6,11 @@ class User < ActiveRecord::Base
   has_many :videos, through: :user_videos  
 
   has_secure_password validations: false
+
+  def normalize_queue_item_positions
+    user_videos.each_with_index do |queue_item, index|
+      queue_item.update_attributes(order: index + 1)
+    end
+  end  
+
 end
