@@ -24,7 +24,7 @@
                 %td
                   = button_to "Play", nil, class: "btn btn-default"
                 %td
-                  = "#{queued_video.rating} Stars" if queued_video.rating
+                  = select_tag "queued_videos[][rating]", options_for_video_reviews(formatted_rating(queued_video.rating)), include_blank: true
                 %td
                   = link_to queued_video, method: :delete do
                     %i.glyphicon.glyphicon-remove

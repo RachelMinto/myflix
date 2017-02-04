@@ -36,4 +36,32 @@ describe UserVideo do
       expect(user_video.rating).to eq(nil)
     end
   end
+
+  context "#rating=" do
+    it "changes the rating of the review if the review is present" do
+      video = Fabricate(:video)
+      user = Fabricate(:user)
+      review = Fabricate(:review, user_id: user.id, video_id: video.id, rating: 2)
+      user_video = Fabricate(:user_video, user_id: user.id, video_id: video.id)
+      user_video.rating = 4
+      expect(Review.first.rating).to eq(4)
+    end
+
+    it "clears the rating of the review if the review is present" do
+      video = Fabricate(:video)
+      user = Fabricate(:user)
+      review = Fabricate(:review, user_id: user.id, video_id: video.id, rating: 2)
+      user_video = Fabricate(:user_video, user_id: user.id, video_id: video.id)
+      user_video.rating = nil
+      expect(Review.first.rating).to be_nil
+    end
+
+    it "creates a review with the rating if the review is not present" do
+      video = Fabricate(:video)
+      user = Fabricate(:user)
+      user_video = Fabricate(:user_video, user_id: user.id, video_id: video.id)
+      user_video.rating = 3
+      expect(Review.first.rating).to eq(3)   
+    end
+  end
 end

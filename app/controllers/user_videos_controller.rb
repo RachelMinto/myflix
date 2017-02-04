@@ -51,7 +51,7 @@ class UserVideosController < ApplicationController
     ActiveRecord::Base.transaction do
       params[:queued_videos].each do |queue_item_data|
         queue_item = UserVideo.find(queue_item_data["id"])
-        queue_item.update_attributes!(order: queue_item_data["order"]) if queue_item.user == current_user
+        queue_item.update_attributes!(order: queue_item_data["order"], rating: queue_item_data["rating"]) if queue_item.user == current_user
       end
     end
   end
