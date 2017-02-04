@@ -3,7 +3,7 @@ require 'spec_helper'
 describe VideosController do
   describe "GET show" do
     it "sets @video with authenticated user" do
-      session[:user_id] = Fabricate(:user).id
+      sign_in_user
       video = Fabricate(:video)
       get :show, id: video.id
 
@@ -11,7 +11,7 @@ describe VideosController do
     end
 
     it "sets @reviews for authenticated users" do
-      session[:user_id] = Fabricate(:user).id
+      sign_in_user
       video = Fabricate(:video)      
       review1 = Fabricate(:review, video_id: video.id)
       get :show, id: video.id
@@ -28,7 +28,7 @@ describe VideosController do
 
   describe "GET search" do
     it "sets @video for authenticated user" do
-      session[:user_id] = Fabricate(:user).id
+      sign_in_user
       futurama = Fabricate(:video, title: 'Futurama')
       get :search, search: 'rama'
 

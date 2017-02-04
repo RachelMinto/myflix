@@ -5,13 +5,10 @@ describe ReviewsController do
     let(:video) { Fabricate(:video) }
 
     context "with authenticated user" do
-      let(:current_user) { Fabricate(:user) }      
+      before { sign_in_user }
       
       context "with invalid inputs" do
-        before do
-          session[:user_id] = current_user.id
-          post :create, review: { rating: 3 }, video_id: video.id                 
-        end
+        before { post :create, review: { rating: 3 }, video_id: video.id }
 
         it "does not create a review" do
           expect(Review.count).to eq(0)
@@ -31,10 +28,7 @@ describe ReviewsController do
       end
 
       context "with valid inputs" do
-        before do
-          session[:user_id] = current_user.id
-          post :create, review: Fabricate.attributes_for(:review), video_id: video.id                 
-        end
+        before { post :create, review: Fabricate.attributes_for(:review), video_id: video.id }
 
         it "creates a review" do
           expect(Review.count).to eq(1)

@@ -13,7 +13,7 @@ describe SessionsController do
     end
 
     it "redirects to home_path if user is logged in" do
-      session[:user_id] = Fabricate(:user).id
+      sign_in_user
       get :new       
       expect(response).to redirect_to home_path  
     end

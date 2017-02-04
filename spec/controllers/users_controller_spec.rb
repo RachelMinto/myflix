@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe UsersController do
   describe 'GET new' do
+    before { get :new }
+    
     it "sets @user" do
-      get :new
       expect(assigns(:user)).to be_instance_of(User)
     end
 
     it "renders a new user form" do
-      get :new
       expect(response).to render_template('new')
     end    
   end

@@ -3,10 +3,11 @@ def clear_current_user
 end
 
 def sign_in_user
-  let(:alice) { Fabricate(:user) }
+  alice = Fabricate(:user)
   session[:user_id] = alice.id
 end
 
 def current_user
-  
+  User.find(session[:user_id])
 end
+
