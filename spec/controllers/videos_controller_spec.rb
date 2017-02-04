@@ -3,7 +3,7 @@ require 'spec_helper'
 describe VideosController do
   describe "GET show" do
     it "sets @video with authenticated user" do
-      session[:user_id] = Fabricate(:user).id
+      sign_in_user
       video = Fabricate(:video)
       get :show, id: video.id
 
@@ -11,7 +11,7 @@ describe VideosController do
     end
 
     it "sets @reviews for authenticated users" do
-      session[:user_id] = Fabricate(:user).id
+      sign_in_user
       video = Fabricate(:video)      
       review1 = Fabricate(:review, video_id: video.id)
       get :show, id: video.id
@@ -19,26 +19,26 @@ describe VideosController do
       expect(assigns(:reviews)).to match_array([review1])
     end
 
-    it "redirects to login_path for unauthenticated user" do
-      get :show, id: 4
-     expect(response).to redirect_to root_path
-    end
+    context "with unauthenticated user" do
+      it_behaves_like "requires_authenticated_user" do
+        let(:action) { get :show, id: 4 }
+      end
+    end    
   end
 
   describe "GET search" do
     it "sets @video for authenticated user" do
-      session[:user_id] = Fabricate(:user).id
+      sign_in_user
       futurama = Fabricate(:video, title: 'Futurama')
       get :search, search: 'rama'
 
      expect(assigns(:videos)).to eq([futurama])
     end
 
-    it "redirects to login_path for unauthenticated user" do
-      futurama = Fabricate(:video, title: 'Futurama')
-      get :search, search: 'rama'
-
-     expect(response).to redirect_to root_path
+    context "with unauthenticated user" do
+      it_behaves_like "requires_authenticated_user" do
+        let(:action) { get :search, search: 'rama' }
+      end
     end
   end
 end
