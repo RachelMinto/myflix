@@ -19,10 +19,11 @@ describe VideosController do
       expect(assigns(:reviews)).to match_array([review1])
     end
 
-    it "redirects to login_path for unauthenticated user" do
-      get :show, id: 4
-     expect(response).to redirect_to root_path
-    end
+    context "with unauthenticated user" do
+      it_behaves_like "requires_authenticated_user" do
+        let(:action) { get :show, id: 4 }
+      end
+    end    
   end
 
   describe "GET search" do
@@ -34,11 +35,10 @@ describe VideosController do
      expect(assigns(:videos)).to eq([futurama])
     end
 
-    it "redirects to login_path for unauthenticated user" do
-      futurama = Fabricate(:video, title: 'Futurama')
-      get :search, search: 'rama'
-
-     expect(response).to redirect_to root_path
+    context "with unauthenticated user" do
+      it_behaves_like "requires_authenticated_user" do
+        let(:action) { get :search, search: 'rama' }
+      end
     end
   end
 end

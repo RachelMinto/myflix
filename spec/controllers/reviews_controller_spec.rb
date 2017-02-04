@@ -55,13 +55,9 @@ describe ReviewsController do
     end
 
     context "with unauthenticated user" do
-      before do
-        post :create, review: Fabricate.attributes_for(:review), video_id: video.id                 
+      it_behaves_like "requires_authenticated_user" do
+        let(:action) { post :create, review: Fabricate.attributes_for(:review), video_id: video.id }
       end
-
-      it "should redirect to root_path" do
-        expect(response).to redirect_to root_path
-      end
-    end    
+    end      
   end
 end

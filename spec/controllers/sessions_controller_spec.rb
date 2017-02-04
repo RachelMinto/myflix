@@ -73,15 +73,9 @@ describe SessionsController do
   end
 
   describe 'DELETE destroy' do
-    context "user is not logged in" do
-      before { delete :destroy }
-     
-      it "redirects to root_path" do
-        expect(response).to redirect_to root_path
-      end
-
-      it "gives an error message" do
-        expect(flash[:error]).to eq("You must be logged in to do that.")
+    context "with unauthenticated user" do
+      it_behaves_like "requires_authenticated_user" do
+        let(:action) { delete :destroy }
       end
     end
 

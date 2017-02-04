@@ -2,17 +2,9 @@ require 'spec_helper'
 
 describe UserVideosController do
   describe "GET index" do
-    context "unauthenticated user" do
-      before { get :index }
-
-      it "should redirect to root path" do
-        expect(response).to redirect_to root_path
-      end
-
-      it "should give an error message" do
-        expect(flash[:error]).to eq("You must be logged in to do that.")
-      end
-    end
+    it_behaves_like "requires_authenticated_user" do
+      let(:action) { get :index }
+    end    
 
     context "authenticated user" do
         let(:alice) { Fabricate(:user) }
@@ -139,17 +131,9 @@ describe UserVideosController do
       end
     end
 
-    context "unauthenticated user" do
-      before { delete :destroy, id: user_video.id }
-
-      it "should redirect to root path" do
-        expect(response).to redirect_to root_path
-      end
-
-      it "should give an error message" do
-        expect(flash[:error]).to eq("You must be logged in to do that.")
-      end      
-    end
+    it_behaves_like "requires_authenticated_user" do
+      let(:action) { delete :destroy, id: user_video.id  }
+    end        
   end
 
   describe "POST update_queue" do
@@ -185,7 +169,7 @@ describe UserVideosController do
         it "should create a new rating for a video that doesn't have a current user rating" do
           queued_video1 = Fabricate(:user_video, user_id: alice.id, order: 1)
           post :update_queue, queued_videos: [{id: queued_video1.id, order: 3, rating: 3}]
-          expect(queued_video1.rating).to eq(3)         
+          expect(queued_video1.reload.rating).to eq(3)         
         end
 
         it "should update a rating for a video that has a rating by current existing user" do
@@ -208,43 +192,31 @@ describe UserVideosController do
 
     context "with invalid inputs" do
       let(:alice) { Fabricate(:user) }
+      let(:queued_video1) { Fabricate(:user_video, user_id: alice.id, order: 1) }
 
       before do
         session[:user_id] = alice.id
+        queued_video2 = Fabricate(:user_video, user_id: alice.id, order: 2)
+        post :update_queue, queued_videos: [{id: queued_video1.id, order: 3.5}, {id: queued_video2.id, order: 2}]
       end 
 
       it "redirects to my_queue" do
-        queued_video1 = Fabricate(:user_video, user_id: alice.id, order: 1)
-        queued_video2 = Fabricate(:user_video, user_id: alice.id, order: 2)
-        post :update_queue, queued_videos: [{id: queued_video1.id, order: 3.5}, {id: queued_video2.id, order: 2}]
         expect(response).to redirect_to my_queue_path      
       end
 
       it "sets the flash error message" do
-        queued_video1 = Fabricate(:user_video, user_id: alice.id, order: 1)
-        queued_video2 = Fabricate(:user_video, user_id: alice.id, order: 2)
-        post :update_queue, queued_videos: [{id: queued_video1.id, order: 3.5}, {id: queued_video2.id, order: 2}]
         expect(flash[:error]).to be_present
       end
 
       it "does not change the queue items" do
-        queued_video1 = Fabricate(:user_video, user_id: alice.id, order: 1)
-        queued_video2 = Fabricate(:user_video, user_id: alice.id, order: 2)
-        post :update_queue, queued_videos: [{id: queued_video1.id, order: 3}, {id: queued_video2.id, order: 2.4}]
         expect(queued_video1.reload.order).to eq(1)             
       end
     end
 
     context "with unauthenticated user" do
-      before { post :update_queue, queued_videos: [{id: 1, order: 2}]}
-
-      it "should redirect to root path" do
-        expect(response).to redirect_to root_path
+      it_behaves_like "requires_authenticated_user" do
+        let(:action) { post :update_queue, queued_videos: [{id: 1, order: 2}] }
       end
-
-      it "should give an error message" do
-        expect(flash[:error]).to eq("You must be logged in to do that.")
-      end         
     end
 
     context "with queue items that do not belong to the current_user" do
