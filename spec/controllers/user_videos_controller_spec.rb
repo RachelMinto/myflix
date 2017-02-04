@@ -203,7 +203,6 @@ describe UserVideosController do
           post :update_queue, queued_videos: [{id: queued_video1.id, order: 3, rating: 1}]
           expect(Review.count).to eq(1)              
         end
-
       end
     end
 
@@ -248,7 +247,7 @@ describe UserVideosController do
       end         
     end
 
-    context "with queue items tht do not belong to the current_user" do
+    context "with queue items that do not belong to the current_user" do
       it "should not change the queue_items" do
         alice = Fabricate(:user)
         session[:user_id] = alice.id

@@ -17,19 +17,14 @@
           %tbody
             - @queued_videos.each do |queued_video|
               %tr
-                = hidden_field_tag "queued_videos[][:id]", queued_video.id
-                %td= text_field_tag "queued_videos[][:order]", queued_video.order
+                = hidden_field_tag "queued_videos[][id]", queued_video.id
+                %td= text_field_tag "queued_videos[][order]", queued_video.order
                 %td
                   = link_to queued_video.title, queued_video.video
                 %td
                   = button_to "Play", nil, class: "btn btn-default"
                 %td
-                  %select.form-group(name="queued_videos[][:rating]")
-                    %option(value="5") 5 Stars
-                    %option(value="4") 4 Stars
-                    %option(value="3") 3 Stars
-                    %option(value="2") 2 Stars
-                    %option(value="1") 1 Star
+                  = select_tag "queued_videos[][rating]", options_for_video_reviews(formatted_rating(queued_video.rating)), include_blank: true
                 %td
                   = link_to queued_video, method: :delete do
                     %i.glyphicon.glyphicon-remove

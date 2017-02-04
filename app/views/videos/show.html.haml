@@ -6,7 +6,7 @@
       .video_info.col-sm-3
         %header
           %h3= @video.title
-          %span= "Rating: #{@video.average_rating}/5.0"
+          %span= "Rating: #{@video.average_rating}"
         %p= @video.description
         .actions
           %a.btn.btn-primary(href="") Watch Now
@@ -18,7 +18,7 @@
         %fieldset
           .form-group
             %label Rate this video
-            = f.select :rating, options_for_select([5, 4, 3, 2, 1].map { |num| [pluralize(num, "Star")]})
+            = f.select :rating, options_for_video_reviews
             %label Write Review
             = f.text_area :comment, rows: 6, class: "span6"
         %fieldset.form-group.actions.clearfix
