@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
     end
   end  
 
+  def has_in_queue?(video)
+    user_videos.includes(:video).map(&:video).include? video
+  end
 end
