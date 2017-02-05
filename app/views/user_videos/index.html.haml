@@ -18,7 +18,11 @@
               - @queued_videos.each do |queued_video|
                 %tr
                   = hidden_field_tag "queued_videos[][id]", queued_video.id
+<<<<<<< HEAD
                   %td= text_field_tag "queued_videos[][position]", queued_video.position, id: "video_#{queued_video.video.id}"
+=======
+                  %td= text_field_tag "queued_videos[][order]", queued_video.order, id: "video_#{queued_video.video.id}"
+>>>>>>> 238f968fc3c552a321cc80c3ad04201ff12aed06
                   %td
                     = link_to queued_video.title, queued_video.video
                   %td
