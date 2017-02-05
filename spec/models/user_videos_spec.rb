@@ -3,7 +3,7 @@ require "spec_helper"
 describe UserVideo do
   it { should belong_to(:user)}
   it { should belong_to(:video)}
-  it { should validate_numericality_of(:order).only_integer }
+  it { should validate_numericality_of(:position).only_integer }
 
   context "#title" do
     let(:video) { Fabricate(:video, title: 'Futurama') }

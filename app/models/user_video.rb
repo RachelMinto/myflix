@@ -3,7 +3,7 @@ class UserVideo < ActiveRecord::Base
   belongs_to :video
 
   validates_presence_of :user_id, :video_id
-  validates_numericality_of :order, { only_integer: true }
+  validates_numericality_of :position, { only_integer: true }
 
   delegate :title, to: :video
 
