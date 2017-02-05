@@ -6,10 +6,8 @@ feature "user signs in" do
   end
 
   scenario "with valid email and password" do
-    visit login_path
-    fill_in("Email Address", with: "alice@hotmail.com")
-    fill_in("password", with: "password")
-    click_button('Sign In')
-    page.should have_content 'Alice Munro'
+    alice = Fabricate(:user)
+    sign_in(alice)
+    page.should have_content alice.full_name
   end
 end
