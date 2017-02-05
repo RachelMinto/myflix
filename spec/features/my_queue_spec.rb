@@ -26,7 +26,17 @@ feature 'user interacts with the queue' do
 
     visit home_path
     find("a[href='/videos/#{futurama.id}']").click
-    click_link "+ My Queue"    
+    click_link "+ My Queue"
+
+    fill_in("video_#{monk.id}", with: 3)
+    fill_in("video_#{futurama.id}", with: 2)
+    fill_in("video_#{south_park.id}", with: 1)
+
+    click_button "Update Instant Queue"
+
+    expect(find("#video_#{monk.id}").value).to eq("3")
+    expect(find("#video_#{futurama.id}").value).to eq("2")        
+    expect(find("#video_#{south_park.id}").value).to eq("1")    
   end
 end
 

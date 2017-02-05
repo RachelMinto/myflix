@@ -30,7 +30,7 @@ class UserVideosController < ApplicationController
 
   private
 
-  def order
+  def position
     current_user.user_videos.length + 1
   end
 
@@ -42,7 +42,7 @@ class UserVideosController < ApplicationController
     if current_user.user_videos.map(&:video_id).include? video.id
       flash[:error] = "Video is already in queue."
     else
-      UserVideo.create(video: video, user: current_user, order: order)
+      UserVideo.create(video: video, user: current_user, position: position)
       flash[:success] = "Video successfully added to your queue."
     end
   end
@@ -51,7 +51,7 @@ class UserVideosController < ApplicationController
     ActiveRecord::Base.transaction do
       params[:queued_videos].each do |queue_item_data|
         queue_item = UserVideo.find(queue_item_data["id"])
-        queue_item.update_attributes!(order: queue_item_data["order"], rating: queue_item_data["rating"]) if queue_item.user == current_user
+        queue_item.update_attributes!(position: queue_item_data["position"], rating: queue_item_data["rating"]) if queue_item.user == current_user
       end
     end
   end
