@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe User do
+  it { should validate_presence_of(:email) }
+  it { should validate_presence_of(:password) }
+  it { should validate_presence_of(:full_name) }
+  it { should validate_uniqueness_of(:email) }
+  it { should have_many(:user_videos).order(:position) }  
+  it { should have_many(:reviews).order("created_at DESC") }
+
   context "#has_in_queue?" do
     it "should return false if current user's queue does not include video" do
       video = Fabricate(:video)
