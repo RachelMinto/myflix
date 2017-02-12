@@ -3,9 +3,9 @@
     = link_to "MyFLiX"
   - if logged_in?    
     %ul.col-md-3.clearfix
-      %li= link_to "Videos"
-      %li= link_to "My Queue"
-      %li= link_to "People"
+      %li= link_to "Videos", home_path
+      %li= link_to "My Queue", my_queue_path
+      %li= link_to "People", people_path
     %form.col-md-5.navbar-form(action="/videos/search" method="get")
       .form-group
         %input.form-control(type="text" name="search" placeholder="Search for videos here")
