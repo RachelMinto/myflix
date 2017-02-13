@@ -9,11 +9,14 @@ feature 'user resets password' do
     visit home_path
     click_link "Sign In"
     click_link "Forgot Password?"
+
     request_password_reset_link_email
     open_email('me@hotmail.com')
     expect_email_to_be_for_password_reset
+
     follow_password_reset_link
     expect_password_reset_page
+    
     reset_password
     expect_reset_success_message
     login_with_new_password
