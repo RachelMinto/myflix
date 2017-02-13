@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_secure_password validations: false
 
+  before_create :generate_token
+
   def normalize_queue_item_positions
     user_videos.each_with_index do |queue_item, index|
       queue_item.update_attributes(position: index + 1)
@@ -25,5 +27,9 @@ class User < ActiveRecord::Base
 
   def can_follow?(user)
     !(self.follows?(user) || self == user)
+  end
+  
+  def generate_token
+    self.token = SecureRandom.urlsafe_base64
   end
 end

@@ -29,6 +29,7 @@ describe UsersController do
     end
 
     context "email sending" do
+      before { ActionMailer::Base.deliveries.clear }      
       after { ActionMailer::Base.deliveries.clear }
 
       it "sends to the user if valid inputs" do
