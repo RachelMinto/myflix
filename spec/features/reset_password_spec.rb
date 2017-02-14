@@ -20,6 +20,8 @@ feature 'user resets password' do
     reset_password
     expect_reset_success_message
     login_with_new_password
+
+    clear_email
   end
 
   def request_password_reset_link_email
