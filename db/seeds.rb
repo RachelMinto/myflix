@@ -34,6 +34,8 @@ monk = Video.find_by(id: 6)
 monk.category_id = 3
 monk.save
 
+User.create(email: 'example@hotmail.com', full_name: "Harry McCarthy", password: 'password')
+
 Video.create(title: 'Clueless', description: 'A rich high school student tries to boost a new pupil\'s popularity, but reckons without affairs of the heart getting in the way.', large_cover_url: '/tmp/clueless_large.jpg', small_cover_url: '/tmp/clueless.jpg', category_id: 1)
 Video.create(title: 'Django Unchained', description: 'With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.', large_cover_url: '/tmp/django_large.jpg', small_cover_url: '/tmp/django.jpg', category_id: 2)
 Video.create(title: 'Hot Fuzz', description: 'Exceptional London cop Nicholas Angel is involuntarily transferred to a quaint English village and paired with a witless new partner. While on the beat, Nicholas suspects a sinister conspiracy is afoot with the residents.', large_cover_url: '/tmp/hotfuzz_large.jpg', small_cover_url: '/tmp/hotfuzz.jpg', category_id: 3)
