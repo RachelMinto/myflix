@@ -11,6 +11,10 @@ def sign_in_user
   session[:user_id] = alice.id
 end
 
+def sign_out
+  visit logout_path
+end
+
 def sign_in(a_user=nil)
   user = a_user || Fabricate(:user)
   visit login_path
