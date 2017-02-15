@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
+  def create   
     @user = User.new(user_params)
     if @user.save
       handle_invitation if params[:invitation_token].present?
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def new_with_invitation_token
+    # sign_out_current_user if current_user 
     invitation = Invitation.where(token: params[:token]).first
     if invitation
       @user = User.new(email: invitation.recipient_email)
