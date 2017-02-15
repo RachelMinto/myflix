@@ -16,8 +16,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-
-  def sign_out_current_user
-    session[:user_id] = nil
-  end
 end

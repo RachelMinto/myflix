@@ -21,7 +21,6 @@ class UsersController < ApplicationController
   end
 
   def new_with_invitation_token
-    # sign_out_current_user if current_user 
     invitation = Invitation.where(token: params[:token]).first
     if invitation
       @user = User.new(email: invitation.recipient_email)

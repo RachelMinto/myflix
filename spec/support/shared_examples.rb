@@ -11,3 +11,9 @@ shared_examples "requires_authenticated_user" do
     expect(flash[:error]).to eq("You must be logged in to do that.")
   end     
 end
+
+shared_examples "tokenable" do
+  it "generates a random token when the user is created" do
+    expect(object.token).to be_present
+  end
+end

@@ -8,10 +8,9 @@ describe User do
   it { should have_many(:user_videos).order(:position) }  
   it { should have_many(:reviews).order("created_at DESC") }
 
-  it "generates a random token when the user is created" do
-    alice = Fabricate(:user)
-    expect(alice.token).to be_present
-  end 
+  it_behaves_like "tokenable" do
+    let(:object) { Fabricate(:user) }
+  end
 
   context "#has_in_queue?" do
     it "should return false if current user's queue does not include video" do

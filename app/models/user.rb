@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Tokenable
+  
   validates_presence_of :full_name, :password, :email
   validates_uniqueness_of :email
   has_many :reviews, -> { order "created_at DESC" }
@@ -8,8 +10,6 @@ class User < ActiveRecord::Base
   has_many :leading_relationships, class_name: "Relationship", foreign_key: :leader_id
 
   has_secure_password validations: false
-
-  before_create :generate_token
 
   def normalize_queue_item_positions
     user_videos.each_with_index do |queue_item, index|
@@ -31,9 +31,5 @@ class User < ActiveRecord::Base
 
   def follow(another_user)
     following_relationships.create(leader: another_user) if can_follow?(another_user)
-  end
-  
-  def generate_token
-    self.token = SecureRandom.urlsafe_base64
   end
 end
