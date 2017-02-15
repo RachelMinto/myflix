@@ -46,8 +46,8 @@ Video.create(title: 'The Simpsons', description: 'The Simpsons is an American an
 
 Review.create(rating: 5, comment: "What a great movie!!", user_id: 1, video_id: 2 )
 
-UserVideo.create(order: 1, user: User.find(1), video: Video.find(4))
-UserVideo.create(order: 2, user: User.find(1), video: Video.find(2))
-UserVideo.create(order: 3, user: User.find(1), video: Video.find(1))
-UserVideo.create(order: 4, user: User.find(1), video: Video.find(5))
+UserVideo.create(position: 1, user: User.find(1), video: Video.find(4))
+UserVideo.create(position: 2, user: User.find(1), video: Video.find(2))
+UserVideo.create(position: 3, user: User.find(1), video: Video.find(1))
+UserVideo.create(position: 4, user: User.find(1), video: Video.find(5))
 
