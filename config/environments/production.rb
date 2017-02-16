@@ -30,7 +30,7 @@ Myflix::Application.configure do
 #     enable_starttls_auto: true  }  
 # end  
   
-  config.action_mailer.default_url_options = { host: ENV['MAILGUN_DOMAIN']}
+  config.action_mailer.default_url_options = { host: ENV['domain']}
 
   ActionMailer::Base.smtp_settings = {
     :port           => ENV['MAILGUN_SMTP_PORT'],
