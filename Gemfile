@@ -14,6 +14,7 @@ gem 'bootstrap_form'
 gem 'bcrypt-ruby'
 gem 'fabrication'
 gem 'faker'
+gem 'sidekiq'
 
 group :development do
   gem 'thin'
