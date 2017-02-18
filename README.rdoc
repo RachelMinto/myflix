@@ -1,4 +1,4 @@
-A deployed version can be found here: https://rm-myflix.herokuapp.com/home
+A deployed version can be found here: https://rm-myflix.herokuapp.com
 
 Feel free to either make a new user, or you can use the following credentials to sign in:
 user@fakeemailservice.com
