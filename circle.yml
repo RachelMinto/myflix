@@ -1,0 +1,19 @@
+machine:
+  ruby:
+    version: 2.1.2
+deployment:
+  production:
+    branch: master
+    commands:
+      - heroku maintenance:on --app rm-myflix
+      - heroku pg:backups capture --app rm-myflix
+      - git push git@heroku.com:rm-myflix.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app rm-myflix
+      - heroku maintenance:off --app rm-myflix
+  staging:
+    branch: staging
+    commands:
+      - heroku maintenance:on --app safe-citadel-62540
+      - git push git@heroku.com:safe-citadel-62540.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app safe-citadel-62540
+      - heroku maintenance:off --app safe-citadel-62540
