@@ -16,6 +16,7 @@ gem 'fabrication'
 gem 'faker'
 gem 'sidekiq'
 gem 'unicorn'
+gem "sentry-raven" 
 
 group :development do
   gem 'thin'
@@ -41,7 +42,6 @@ group :test do
 end
 
 group :production do
-  gem 'rails_12factor'
-  gem "sentry-raven"  
+  gem 'rails_12factor' 
 end
 
