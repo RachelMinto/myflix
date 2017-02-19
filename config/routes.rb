@@ -15,7 +15,7 @@ Myflix::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :videos, only: [:new]
+    resources :videos, only: [:new, :create]
   end
 
   resources :relationships, only: [:create, :destroy]

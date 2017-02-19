@@ -28,6 +28,11 @@ def set_current_user(a_user=nil)
   session[:user_id] = user.id
 end
 
+def set_current_admin(an_admin=nil)
+  admin = an_admin || Fabricate(:admin)
+  session[:user_id] = admin.id
+end
+
 def click_on_video_on_home_page(video)
   find("a[href='/videos/#{video.id}']").click
 end
