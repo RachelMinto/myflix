@@ -3,7 +3,7 @@ class Video < ActiveRecord::Base
   has_many :reviews, -> { order "created_at DESC" }
   has_many :user_videos
   has_many :users, through: :user_videos
-  validates_presence_of :title, :description, :small_cover, :large_cover
+  validates_presence_of :title, :description
 
   mount_uploader :large_cover, LargeCoverUploader
   mount_uploader :small_cover, SmallCoverUploader  
