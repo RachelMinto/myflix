@@ -93,6 +93,8 @@ GEM
       i18n (~> 0.5)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
+    figaro (1.1.1)
+      thor (~> 0.14)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
@@ -207,6 +209,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    stripe (2.0.0)
+      faraday (~> 0)
     thin (1.7.0)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -247,6 +251,7 @@ DEPENDENCIES
   database_cleaner (= 1.4.1)
   fabrication
   faker
+  figaro
   haml-rails
   jquery-rails
   launchy
@@ -263,6 +268,7 @@ DEPENDENCIES
   sentry-raven
   shoulda-matchers (= 2.7.0)
   sidekiq
+  stripe
   thin
   uglifier
   unicorn
