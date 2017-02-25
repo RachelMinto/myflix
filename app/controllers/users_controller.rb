@@ -8,18 +8,18 @@ class UsersController < ApplicationController
   def create   
     @user = User.new(user_params)
 
-    if @user.save
-      handle_invitation if params[:invitation_token].present?
-
+    if @user.valid?
       token = params[:stripeToken]
       charge = StripeWrapper::Charge.create( :amount => 999, :card => token)
 
       if charge.successful?
+        @user.save
+        handle_invitation if params[:invitation_token].present?        
         AppMailer.send_welcome_email(@user).deliver
         redirect_to login_path
       else
         flash[:error] = charge.error_message
-        redirect_to register_path
+        render :new
       end
     else
       render :new

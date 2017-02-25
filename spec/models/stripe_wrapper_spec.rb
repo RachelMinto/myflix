@@ -11,7 +11,6 @@ describe StripeWrapper::Charge do
     },
   ).id    
   end
-  before { StripeWrapper.set_api_key }
 
   context "with valid credit card" do
     let(:card_number) { '4242424242424242'}
