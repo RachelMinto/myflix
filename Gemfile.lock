@@ -265,7 +265,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-aws
   coffee-rails
-  database_cleaner (= 1.4.1)
+  database_cleaner
   fabrication
   faker
   figaro
