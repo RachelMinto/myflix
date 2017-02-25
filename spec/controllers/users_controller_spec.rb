@@ -16,7 +16,10 @@ describe UsersController do
   describe 'POST create' do
     context "with valid input" do
       before do
-        post :create, user: Fabricate.attributes_for(:user)
+        charge = double('charge')
+        charge.stub(:successful?).and_return(true)
+        StripeWrapper::Charge.stub(:create).and_return(charge)        
+        post :create, token: '123', user: Fabricate.attributes_for(:user)
       end
 
       it "creates the user" do
@@ -52,18 +55,42 @@ describe UsersController do
       end
     end
 
+    context "with an invalid card" do
+      before do
+        charge = double('charge')
+        charge.stub(:successful?).and_return(false)
+        charge.stub(:error_message).and_return('Your card was declined.')
+        StripeWrapper::Charge.stub(:create).and_return(charge)        
+        post :create, token: '123', user: Fabricate.attributes_for(:user)        
+      end
+
+      it "sets the flash error message" do
+        flash[:error].should == 'Your card was declined.'
+      end
+
+      it "redirects to new_user_path" do
+        expect(response).to redirect_to register_path
+      end
+    end     
+
     context "email sending" do
-      before { ActionMailer::Base.deliveries.clear }      
+      before do
+        ActionMailer::Base.deliveries.clear
+        charge = double('charge')
+        charge.stub(:successful?).and_return(true)
+        StripeWrapper::Charge.stub(:create).and_return(charge)        
+      end
+
       after { ActionMailer::Base.deliveries.clear }
 
       it "sends to the user if valid inputs" do
-        post :create, user: {email: 'fake@hotmail.com', full_name: "Alice W.", password: 'password'}
+        post :create, token: '123', user: {email: 'fake@hotmail.com', full_name: "Alice W.", password: 'password'}
         message = ActionMailer::Base.deliveries.last
         message.to.should == ['fake@hotmail.com']
       end
 
       it "includes the user's name with valid inputs" do
-        post :create, user: {email: 'fake@hotmail.com', full_name: "Alice W.", password: 'password'}
+        post :create, token: '123', user: {email: 'fake@hotmail.com', full_name: "Alice W.", password: 'password'}
         message = ActionMailer::Base.deliveries.last
         message.body.should include("Alice W.")       
       end
@@ -76,7 +103,10 @@ describe UsersController do
 
     context "with invalid input" do
       before do
-        post :create, :user => { full_name: 'Rachel Minto', password: 'password'}                 
+        charge = double('charge')
+        charge.stub(:successful?).and_return(true)
+        StripeWrapper::Charge.stub(:create).and_return(charge)          
+        post :create, token: '123', :user => { full_name: 'Rachel Minto', password: 'password'}                 
       end 
 
       it "does not create the user" do

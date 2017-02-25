@@ -13,14 +13,12 @@ feature 'Admin adds new video' do
     attach_file "Large cover", "spec/support/uploads/clueless_large.jpg"
     attach_file "Small cover", "spec/support/uploads/clueless.jpg"
     fill_in "Video URL", with: "https://www.example.com/my_video.mp4"
-    save_and_open_page
     click_button "Add Video"
 
     sign_out
     sign_in
 
     visit video_path(Video.first)
-    save_and_open_page
     expect(page).to have_selector("img[src='/uploads/clueless_large.jpg']")
     expect(page).to have_selector("a[href='https://www.example.com/my_video.mp4']")
   end

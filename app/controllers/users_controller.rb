@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         redirect_to login_path
       else
         flash[:error] = charge.error_message
-        redirect_to new_user_path
+        redirect_to register_path
       end
     else
       render :new
