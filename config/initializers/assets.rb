@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += ['payment.js']
+Rails.application.config.assets.precompile += ['payments.js']
