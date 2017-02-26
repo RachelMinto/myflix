@@ -17,5 +17,3 @@ deployment:
       - git push git@heroku.com:safe-citadel-62540.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app safe-citadel-62540
       - heroku maintenance:off --app safe-citadel-62540
-
-      # did not auto deploy with fixed build.

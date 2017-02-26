@@ -16,12 +16,14 @@ class UsersController < ApplicationController
         @user.save
         handle_invitation if params[:invitation_token].present?        
         AppMailer.send_welcome_email(@user).deliver
+        flash[:success] = "Thank you for registering with MyFlix. Please sign in now."
         redirect_to login_path
       else
         flash[:error] = charge.error_message
         render :new
       end
     else
+      flash[:error] = "Invalid user information. Please check the errors below."
       render :new
     end
   end
