@@ -3,10 +3,10 @@ require 'spec_helper'
 describe UserRegister do
   describe "#register" do
     context "valid personal info and valid card" do
-      let(:charge) { double(:charge, successful?: true) }
+      let(:customer) { double(:customer, successful?: true) }
 
       before do
-        StripeWrapper::Charge.should_receive(:create).and_return(charge)
+        StripeWrapper::Customer.should_receive(:create).and_return(customer)
       end
 
       after { ActionMailer::Base.deliveries.clear }
@@ -55,18 +55,15 @@ describe UserRegister do
 
     context "valid personal info and declined card" do
       it "does not create a new user record" do
-        charge = double(:charge, successful?: false, error_message: "Your card was declined.")      
-        StripeWrapper::Charge.should_receive(:create).and_return(charge)
+        customer = double(:customer, successful?: false, error_message: "Your card was declined.")      
+        StripeWrapper::Customer.should_receive(:create).and_return(customer)
         UserRegister.new(Fabricate.build(:user)).register("776433", nil)              
         expect(User.count).to eq(0)
       end
     end
 
     context "with invalid personal info" do
-      before do
-        ActionMailer::Base.deliveries.clear
-      end
-
+      before { ActionMailer::Base.deliveries.clear }
       after { ActionMailer::Base.deliveries.clear }
             
       it "does not create the user" do
@@ -75,7 +72,7 @@ describe UserRegister do
       end
 
       it "does not charge the card" do
-        StripeWrapper::Charge.should_not_receive(:create)
+        StripeWrapper::Customer.should_not_receive(:create)
         UserRegister.new(User.new(email: 'rachel@example.com')).register("776433", nil) 
       end
       

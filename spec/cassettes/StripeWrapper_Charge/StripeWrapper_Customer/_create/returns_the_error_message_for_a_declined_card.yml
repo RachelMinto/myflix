@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 28 Feb 2017 12:06:56 GMT
+      - Tue, 28 Feb 2017 12:25:47 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -47,7 +47,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_ACYs27YhPdQJP0
+      - req_ACZB0C6TTi1Sxs
       Stripe-Version:
       - '2017-01-27'
       Strict-Transport-Security:
@@ -56,10 +56,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_19s9kqChPCJ2aJVTkGdmaeDs",
+          "id": "tok_19sA35ChPCJ2aJVTQ6ab7Uto",
           "object": "token",
           "card": {
-            "id": "card_19s9kqChPCJ2aJVTZzb7OF9i",
+            "id": "card_19sA35ChPCJ2aJVTZpqX6Ojx",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -83,19 +83,19 @@ http_interactions:
             "tokenization_method": null
           },
           "client_ip": "209.6.134.113",
-          "created": 1488283616,
+          "created": 1488284747,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Tue, 28 Feb 2017 12:06:56 GMT
+  recorded_at: Tue, 28 Feb 2017 12:25:47 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: card=tok_19s9kqChPCJ2aJVTkGdmaeDs&plan=base&email=mallory%40abernathybotsford.net
+      string: card=tok_19sA35ChPCJ2aJVTQ6ab7Uto&plan=base&email=emelia%40mayer.net
     headers:
       User-Agent:
       - Stripe/v1 RubyBindings/2.0.0
@@ -119,7 +119,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 28 Feb 2017 12:06:57 GMT
+      - Tue, 28 Feb 2017 12:25:48 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -137,7 +137,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_ACYsDlc5I2Wzoy
+      - req_ACZBKb8ayWnwb4
       Stripe-Version:
       - '2017-01-27'
     body:
@@ -153,5 +153,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Tue, 28 Feb 2017 12:06:57 GMT
+  recorded_at: Tue, 28 Feb 2017 12:25:48 GMT
 recorded_with: VCR 3.0.3

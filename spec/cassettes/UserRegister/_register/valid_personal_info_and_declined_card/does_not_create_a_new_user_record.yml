@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: card=tok_19sA2jChPCJ2aJVTfUZeO7IP&plan=base&email=john%40example.com
+      string: card=776433&plan=base&email=ellie.herzog%40rogahn.name
     headers:
       User-Agent:
       - Stripe/v1 RubyBindings/2.0.0
@@ -23,17 +23,17 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 402
-      message: Payment Required
+      code: 400
+      message: Bad Request
     headers:
       Server:
       - nginx
       Date:
-      - Tue, 28 Feb 2017 12:25:26 GMT
+      - Tue, 28 Feb 2017 12:29:54 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '173'
+      - '118'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -47,7 +47,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_ACZBmKLfT7Ev8J
+      - req_ACZFT1yKW4iEaq
       Stripe-Version:
       - '2017-01-27'
     body:
@@ -55,13 +55,11 @@ http_interactions:
       string: |
         {
           "error": {
-            "message": "Your card was declined.",
-            "type": "card_error",
-            "param": "",
-            "code": "card_declined",
-            "decline_code": "generic_decline"
+            "type": "invalid_request_error",
+            "message": "No such token: 776433",
+            "param": "card"
           }
         }
     http_version: 
-  recorded_at: Tue, 28 Feb 2017 12:25:26 GMT
+  recorded_at: Tue, 28 Feb 2017 12:29:54 GMT
 recorded_with: VCR 3.0.3
