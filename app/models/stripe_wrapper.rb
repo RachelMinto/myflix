@@ -30,19 +30,24 @@ module StripeWrapper
   end
 
   class Customer
-    attr_reader :response
+    attr_reader :response, :error_message
 
     def initialize(options={})
       @response = options[:response]
+      @error_message = options[:error_message]
     end
 
     def self.create(options={})
-      response = Stripe::Customer.create(
-        card: options[:card],
-        plan: 'base',
-        email: options[:user].email
-      )
-      new(response: response)
+      begin
+        response = Stripe::Customer.create(
+          card: options[:card],
+          plan: 'base',
+          email: options[:user].email
+        )
+        new(response: response)
+      rescue Stripe::CardError => e
+        new(error_message: e.message)
+      end
     end
 
     def successful?
