@@ -1,4 +1,4 @@
-A fully tested netflix clone. Front end work was provided by Launch School. Currently this project is still in progress.
+A netfix clone created using TDD. Front end work was provided by Launch School. Currently this project is still in progress.
 
 To see where I'm at, a deployed version can be found here: https://rm-myflix.herokuapp.com
 
