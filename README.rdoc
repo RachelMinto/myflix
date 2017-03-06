@@ -5,3 +5,12 @@ A deployed version can be found here: https://rm-myflix.herokuapp.com
 Feel free to either make a new user, or you can use the following credentials to sign in:
 user@fakeemailservice.com
 password
+
+Install elasticsearch:
+On Mac: 
+brew update
+brew install Caskroom/cask/java
+brew install elasticsearch
+
+To launch elasticsearch: elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
+
