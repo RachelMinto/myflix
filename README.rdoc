@@ -6,4 +6,3 @@ Feel free to either make a new user, or you can use the following credentials to
 user@fakeemailservice.com
 password
 
-Please note that I'm working with mailgun to resolve an issue, so the email sending is not currently functional.

@@ -1,0 +1,179 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/customers
+    body:
+      encoding: US-ASCII
+      string: card=tok_19sA2eChPCJ2aJVTwj1HK8C8&plan=base&email=john%40example.com
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/2.0.0
+      Authorization:
+      - Bearer sk_test_rGhAcGnt1Q2JPDa18RhnAhKN
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"2.0.0","lang":"ruby","lang_version":"2.1.2 p95 (2014-05-08)","platform":"x86_64-darwin16.0","engine":"ruby","publisher":"stripe","uname":"Darwin
+        Rachels-MacBook-Pro.local 16.4.0 Darwin Kernel Version 16.4.0: Thu Dec 22
+        22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64 x86_64","hostname":"Rachels-MacBook-Pro.local"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 28 Feb 2017 12:25:21 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '3363'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_ACZBUv7iHsjout
+      Stripe-Version:
+      - '2017-01-27'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "cus_ACZB1WaXVOaGBd",
+          "object": "customer",
+          "account_balance": 0,
+          "created": 1488284721,
+          "currency": "usd",
+          "default_source": "card_19sA2eChPCJ2aJVTWixPSVdv",
+          "delinquent": false,
+          "description": null,
+          "discount": null,
+          "email": "john@example.com",
+          "livemode": false,
+          "metadata": {},
+          "shipping": null,
+          "sources": {
+            "object": "list",
+            "data": [
+              {
+                "id": "card_19sA2eChPCJ2aJVTWixPSVdv",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_ACZB1WaXVOaGBd",
+                "cvc_check": "pass",
+                "dynamic_last4": null,
+                "exp_month": 7,
+                "exp_year": 2020,
+                "fingerprint": "cL5ggIKMUkluqCc5",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": null,
+                "tokenization_method": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/customers/cus_ACZB1WaXVOaGBd/sources"
+          },
+          "subscriptions": {
+            "object": "list",
+            "data": [
+              {
+                "id": "sub_ACZBrT29IsIC8r",
+                "object": "subscription",
+                "application_fee_percent": null,
+                "cancel_at_period_end": false,
+                "canceled_at": null,
+                "created": 1488284721,
+                "current_period_end": 1490703921,
+                "current_period_start": 1488284721,
+                "customer": "cus_ACZB1WaXVOaGBd",
+                "discount": null,
+                "ended_at": null,
+                "items": {
+                  "object": "list",
+                  "data": [
+                    {
+                      "id": "si_19sA2fChPCJ2aJVTWH0Hxc2F",
+                      "object": "subscription_item",
+                      "created": 1488284721,
+                      "plan": {
+                        "id": "base",
+                        "object": "plan",
+                        "amount": 999,
+                        "created": 1488282131,
+                        "currency": "usd",
+                        "interval": "month",
+                        "interval_count": 1,
+                        "livemode": false,
+                        "metadata": {},
+                        "name": "The Base Plan for MyFlix",
+                        "statement_descriptor": "MyFlix Subscription",
+                        "trial_period_days": null
+                      },
+                      "quantity": 1
+                    }
+                  ],
+                  "has_more": false,
+                  "total_count": 1,
+                  "url": "/v1/subscription_items?subscription=sub_ACZBrT29IsIC8r"
+                },
+                "livemode": false,
+                "metadata": {},
+                "plan": {
+                  "id": "base",
+                  "object": "plan",
+                  "amount": 999,
+                  "created": 1488282131,
+                  "currency": "usd",
+                  "interval": "month",
+                  "interval_count": 1,
+                  "livemode": false,
+                  "metadata": {},
+                  "name": "The Base Plan for MyFlix",
+                  "statement_descriptor": "MyFlix Subscription",
+                  "trial_period_days": null
+                },
+                "quantity": 1,
+                "start": 1488284721,
+                "status": "active",
+                "tax_percent": null,
+                "trial_end": null,
+                "trial_start": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/customers/cus_ACZB1WaXVOaGBd/subscriptions"
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Feb 2017 12:25:21 GMT
+recorded_with: VCR 3.0.3
