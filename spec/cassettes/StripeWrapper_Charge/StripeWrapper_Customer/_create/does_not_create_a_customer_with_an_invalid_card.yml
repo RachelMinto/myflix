@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 28 Feb 2017 12:25:43 GMT
+      - Tue, 28 Feb 2017 12:25:46 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -47,7 +47,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_ACZBKvcyUeC81c
+      - req_ACZBOznnvKmtNt
       Stripe-Version:
       - '2017-01-27'
       Strict-Transport-Security:
@@ -56,10 +56,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_19sA31ChPCJ2aJVT67TZ0Pzm",
+          "id": "tok_19sA34ChPCJ2aJVTwSXJRScq",
           "object": "token",
           "card": {
-            "id": "card_19sA31ChPCJ2aJVTtFGVyXjZ",
+            "id": "card_19sA34ChPCJ2aJVTM9uP38pP",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -83,19 +83,19 @@ http_interactions:
             "tokenization_method": null
           },
           "client_ip": "209.6.134.113",
-          "created": 1488284743,
+          "created": 1488284746,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Tue, 28 Feb 2017 12:25:43 GMT
+  recorded_at: Tue, 28 Feb 2017 12:25:46 GMT
 - request:
     method: post
-    uri: https://api.stripe.com/v1/charges
+    uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: amount=300&currency=usd&card=tok_19sA31ChPCJ2aJVT67TZ0Pzm
+      string: card=tok_19sA34ChPCJ2aJVTwSXJRScq&plan=base&email=dion_corkery%40okonstark.name
     headers:
       User-Agent:
       - Stripe/v1 RubyBindings/2.0.0
@@ -119,11 +119,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 28 Feb 2017 12:25:44 GMT
+      - Tue, 28 Feb 2017 12:25:47 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '201'
+      - '173'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -137,7 +137,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_ACZBKwm90o2Ojo
+      - req_ACZBUEp9GSp65r
       Stripe-Version:
       - '2017-01-27'
     body:
@@ -147,11 +147,11 @@ http_interactions:
           "error": {
             "message": "Your card was declined.",
             "type": "card_error",
+            "param": "",
             "code": "card_declined",
-            "decline_code": "generic_decline",
-            "charge": "ch_19sA32ChPCJ2aJVTE5M4KKYB"
+            "decline_code": "generic_decline"
           }
         }
     http_version: 
-  recorded_at: Tue, 28 Feb 2017 12:25:44 GMT
+  recorded_at: Tue, 28 Feb 2017 12:25:47 GMT
 recorded_with: VCR 3.0.3

@@ -69,12 +69,12 @@ describe Video do
       review = Fabricate(:review, video_id: futurama.id, rating: 1)
       review2 = Fabricate(:review, video_id: futurama.id, rating: 5)
       review3 = Fabricate(:review, video_id: futurama.id, rating: 5)
-      expect(futurama.average_rating).to eq('3.7 / 5.0')      
+      expect(futurama.average_rating).to eq('3.7'.to_f)      
     end
 
-    it "should return 'No Rating Yet' if there are no reviews" do
+    it "should return nil if there are no reviews" do
       futurama = Video.create(title: 'futurama', description: 'something', small_cover: "asdf", large_cover: "asdf")
-      expect(futurama.average_rating).to eq('No Rating Yet')
+      expect(futurama.average_rating).to be_nil
     end
   end
 end

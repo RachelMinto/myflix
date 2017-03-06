@@ -14,11 +14,6 @@ class Video < ActiveRecord::Base
   end
 
   def average_rating
-    sum = 0
-    self.reviews.each { |review| sum += review.rating }
-
-    avg = (sum.to_f / reviews.size.to_f).round(1)
-
-    avg.nan? ? 'No Rating Yet' : "#{avg} / 5.0"
-  end
+    reviews.average(:rating).to_f.round(1) if reviews.any?
+  end  
 end

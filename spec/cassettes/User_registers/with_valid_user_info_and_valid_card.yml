@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: card=tok_19sA9vChPCJ2aJVTEyT6T29Z&plan=base&email=john%40example.com
+      string: card=tok_19sA2eChPCJ2aJVTwj1HK8C8&plan=base&email=john%40example.com
     headers:
       User-Agent:
       - Stripe/v1 RubyBindings/2.0.0
@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 28 Feb 2017 12:32:52 GMT
+      - Tue, 28 Feb 2017 12:25:21 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -47,7 +47,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_ACZImPNd5GoTHZ
+      - req_ACZBUv7iHsjout
       Stripe-Version:
       - '2017-01-27'
       Strict-Transport-Security:
@@ -56,12 +56,12 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "cus_ACZIbt4yhQM7Z7",
+          "id": "cus_ACZB1WaXVOaGBd",
           "object": "customer",
           "account_balance": 0,
-          "created": 1488285172,
+          "created": 1488284721,
           "currency": "usd",
-          "default_source": "card_19sA9vChPCJ2aJVTolCsDygg",
+          "default_source": "card_19sA2eChPCJ2aJVTWixPSVdv",
           "delinquent": false,
           "description": null,
           "discount": null,
@@ -73,7 +73,7 @@ http_interactions:
             "object": "list",
             "data": [
               {
-                "id": "card_19sA9vChPCJ2aJVTolCsDygg",
+                "id": "card_19sA2eChPCJ2aJVTWixPSVdv",
                 "object": "card",
                 "address_city": null,
                 "address_country": null,
@@ -85,10 +85,10 @@ http_interactions:
                 "address_zip_check": null,
                 "brand": "Visa",
                 "country": "US",
-                "customer": "cus_ACZIbt4yhQM7Z7",
+                "customer": "cus_ACZB1WaXVOaGBd",
                 "cvc_check": "pass",
                 "dynamic_last4": null,
-                "exp_month": 2,
+                "exp_month": 7,
                 "exp_year": 2020,
                 "fingerprint": "cL5ggIKMUkluqCc5",
                 "funding": "credit",
@@ -100,30 +100,30 @@ http_interactions:
             ],
             "has_more": false,
             "total_count": 1,
-            "url": "/v1/customers/cus_ACZIbt4yhQM7Z7/sources"
+            "url": "/v1/customers/cus_ACZB1WaXVOaGBd/sources"
           },
           "subscriptions": {
             "object": "list",
             "data": [
               {
-                "id": "sub_ACZIuw23zqTeYJ",
+                "id": "sub_ACZBrT29IsIC8r",
                 "object": "subscription",
                 "application_fee_percent": null,
                 "cancel_at_period_end": false,
                 "canceled_at": null,
-                "created": 1488285172,
-                "current_period_end": 1490704372,
-                "current_period_start": 1488285172,
-                "customer": "cus_ACZIbt4yhQM7Z7",
+                "created": 1488284721,
+                "current_period_end": 1490703921,
+                "current_period_start": 1488284721,
+                "customer": "cus_ACZB1WaXVOaGBd",
                 "discount": null,
                 "ended_at": null,
                 "items": {
                   "object": "list",
                   "data": [
                     {
-                      "id": "si_19sA9wChPCJ2aJVTuaK1UiyK",
+                      "id": "si_19sA2fChPCJ2aJVTWH0Hxc2F",
                       "object": "subscription_item",
-                      "created": 1488285173,
+                      "created": 1488284721,
                       "plan": {
                         "id": "base",
                         "object": "plan",
@@ -143,7 +143,7 @@ http_interactions:
                   ],
                   "has_more": false,
                   "total_count": 1,
-                  "url": "/v1/subscription_items?subscription=sub_ACZIuw23zqTeYJ"
+                  "url": "/v1/subscription_items?subscription=sub_ACZBrT29IsIC8r"
                 },
                 "livemode": false,
                 "metadata": {},
@@ -162,7 +162,7 @@ http_interactions:
                   "trial_period_days": null
                 },
                 "quantity": 1,
-                "start": 1488285172,
+                "start": 1488284721,
                 "status": "active",
                 "tax_percent": null,
                 "trial_end": null,
@@ -171,9 +171,9 @@ http_interactions:
             ],
             "has_more": false,
             "total_count": 1,
-            "url": "/v1/customers/cus_ACZIbt4yhQM7Z7/subscriptions"
+            "url": "/v1/customers/cus_ACZB1WaXVOaGBd/subscriptions"
           }
         }
     http_version: 
-  recorded_at: Tue, 28 Feb 2017 12:32:53 GMT
+  recorded_at: Tue, 28 Feb 2017 12:25:21 GMT
 recorded_with: VCR 3.0.3

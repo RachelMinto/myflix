@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.stripe.com/v1/tokens
+    uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: card[number]=4242424242424242&card[exp_month]=2&card[exp_year]=2020&card[cvc]=314
+      string: card=tok_19sA2jChPCJ2aJVTfUZeO7IP&plan=base&email=john%40example.com
     headers:
       User-Agent:
       - Stripe/v1 RubyBindings/2.0.0
@@ -23,17 +23,17 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 402
+      message: Payment Required
     headers:
       Server:
       - nginx
       Date:
-      - Sat, 25 Feb 2017 13:19:44 GMT
+      - Tue, 28 Feb 2017 12:25:26 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '780'
+      - '173'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -47,47 +47,21 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_ABSNzyET1U7fIb
+      - req_ACZBmKLfT7Ev8J
       Stripe-Version:
       - '2017-01-27'
-      Strict-Transport-Security:
-      - max-age=31556926; includeSubDomains
     body:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_19r5SeChPCJ2aJVTllBSsI3v",
-          "object": "token",
-          "card": {
-            "id": "card_19r5SeChPCJ2aJVTeBl9mOLp",
-            "object": "card",
-            "address_city": null,
-            "address_country": null,
-            "address_line1": null,
-            "address_line1_check": null,
-            "address_line2": null,
-            "address_state": null,
-            "address_zip": null,
-            "address_zip_check": null,
-            "brand": "Visa",
-            "country": "US",
-            "cvc_check": "unchecked",
-            "dynamic_last4": null,
-            "exp_month": 2,
-            "exp_year": 2020,
-            "fingerprint": "cL5ggIKMUkluqCc5",
-            "funding": "credit",
-            "last4": "4242",
-            "metadata": {},
-            "name": null,
-            "tokenization_method": null
-          },
-          "client_ip": "209.6.134.113",
-          "created": 1488028784,
-          "livemode": false,
-          "type": "card",
-          "used": false
+          "error": {
+            "message": "Your card was declined.",
+            "type": "card_error",
+            "param": "",
+            "code": "card_declined",
+            "decline_code": "generic_decline"
+          }
         }
     http_version: 
-  recorded_at: Sat, 25 Feb 2017 13:19:44 GMT
+  recorded_at: Tue, 28 Feb 2017 12:25:26 GMT
 recorded_with: VCR 3.0.3
