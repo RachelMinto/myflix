@@ -1,8 +1,4 @@
 A netfix clone created using TDD. Front end work was provided by Launch School. Currently this project is still in progress.
 
-To see where I'm at, a deployed version can be found here: https://rm-myflix.herokuapp.com
 
-Feel free to either make a new user, or you can use the following credentials to sign in:
-user@fakeemailservice.com
-password
 
