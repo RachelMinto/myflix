@@ -1,6 +1,6 @@
-This is a a netfix clone created using TDD. 
+This is a a netfix clone created using TDD and DRY principles.
 
-## Features
+##Features
 
 - User authentication using bcrypt
 - Payments using Stripe
@@ -12,7 +12,7 @@ This is a a netfix clone created using TDD.
 - Users receive a welcome email upon registration
 - Admins can add videos and video images (stored with S3)
 
-## Development
+Development
 - Comprehensive unit, model, and integration test coverage with RSpec and Capybara
 - Continuous development using Circle CI
 - GitHub workflow
@@ -20,12 +20,6 @@ This is a a netfix clone created using TDD.
 - Utilizes sidekiq for email sending
 - Uses Raven for monitoring production server errors
 - Heroku deployment utilized staging and production servers
-
-
-
-
-
-
 
 Note: Front end was largely provided by Launch School.
 
